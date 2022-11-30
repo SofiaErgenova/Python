@@ -82,6 +82,8 @@ while n > 1:
     list_money[m] = list_money[m-1]+1  
     del peoples[m-1]
     del list_money[m-1]
+    print(f"Номер выбывшего человека: {peoples[m-1]}")
+    print(f"Количество его монет: {list_money[m-1]}")
     n = n-1
 
     peoples_1 = peoples[m:]
@@ -91,7 +93,16 @@ while n > 1:
     list_money_1 = list_money[m:]
     list_money_2 = list_money[0:m]
     list_money = list_money_1 + list_money_2
+
+    str = input("Продолжаем игру? Введите да или нет: ")
+    if str == "да":
+        continue
+    elif str == "нет":
+        break
+    else:
+        print("невалидный ответ")
+
     
 else:
-    print(f"Номер человека {peoples}")
+    print(f"Номер последнего человека {peoples}")
     print(f"Количество его монет: {list_money}")
