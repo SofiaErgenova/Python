@@ -79,19 +79,19 @@ while n > 1:
             list_money[i] = list_money[i]+2  
          
     m = m % n  
-    list_money[m] = list_money[m-1]+1  
+    list_money[m] = list_money[m] + list_money[m-1]  
     del peoples[m-1]
     del list_money[m-1]
     n = n-1
 
-    peoples_1 = peoples[m:]
-    peoples_2 = peoples[0:m]
+    peoples_1 = peoples[m-1:]
+    peoples_2 = peoples[0:m-1]
     peoples = peoples_1 + peoples_2
     
-    list_money_1 = list_money[m:]
-    list_money_2 = list_money[0:m]
+    list_money_1 = list_money[m-1:]
+    list_money_2 = list_money[0:m-1]
     list_money = list_money_1 + list_money_2
-    
+
     print(f"Номера оставшихся в круге: {peoples}")
     print(f"Количество их монет: {list_money}")
 
