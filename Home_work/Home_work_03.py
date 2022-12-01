@@ -75,7 +75,7 @@ def Search_fractional_part_number(test_number:list, num_round: int) -> list:
     fractional_part_number = []
 
     for i in range(len(float_list_task)):
-        while float_list_task[i] > 1:
+        while float_list_task[i] >= 1:
             float_list_task[i] = round((test_number[i] - 1), num_round)
         else:
             fractional_part_number.append(float_list_task[i])
@@ -93,7 +93,7 @@ def Search_max_min_diff(test_numbers:list) -> float:
             max = test_numbers[i]
         elif test_numbers[i] < min:
             min = test_numbers[i]
-    diff = max - min
+    diff = round((max - min),3)
     print(f"минимальное значение {min}, максимальное значение {max}, разница {diff}")
     return min, max, diff
 
