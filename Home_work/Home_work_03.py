@@ -180,10 +180,8 @@ def Create_fibonacci(n: int) -> list:
             list_fibonacci.append(i)
 
     del list_fibonacci[0]
-    list_fibonacci = list_fibonacci[::-1]
-    print(list_fibonacci)
-   
-    list_fibonacci = list_fibonacci + list_fibonacci_plus
+    
+    list_fibonacci = list_fibonacci[::-1] + list_fibonacci_plus
     print(f"Список Фибоначчи для {n}: {list_fibonacci}")
     return list_fibonacci
 
