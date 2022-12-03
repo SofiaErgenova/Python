@@ -68,21 +68,22 @@ def Сreate_random_float_list(len_list: int, num_round: int, first_num: float, s
     print(float_list)
     return float_list
 
-float_list_task = Сreate_random_float_list(5,2,1,10)
+# float_list_task = Сreate_random_float_list(5,2,1,10)
 
 
 def Search_fractional_part_number(test_number:list, num_round: int) -> list:
+    """создает массив дробной части элементов"""
     fractional_part_number = []
 
-    for i in range(len(float_list_task)):
-        while float_list_task[i] >= 1:
-            float_list_task[i] = round((test_number[i] - 1), num_round)
+    for i in range(len(test_number)):
+        while test_number[i] >= 1:
+            test_number[i] = round((test_number[i] - 1), num_round)
         else:
-            fractional_part_number.append(float_list_task[i])
+            fractional_part_number.append(test_number[i])
     print(fractional_part_number)
     return fractional_part_number
 
-float_list_task = Search_fractional_part_number(float_list_task,2)
+# float_list_task = Search_fractional_part_number(float_list_task,2)
 
 def Search_max_min_diff(test_numbers:list) -> float:
     """нахождение максимального, минимального значения и их разницы"""
@@ -97,7 +98,7 @@ def Search_max_min_diff(test_numbers:list) -> float:
     print(f"минимальное значение {min}, максимальное значение {max}, разница {diff}")
     return min, max, diff
 
-Search_max_min_diff(float_list_task)
+# Search_max_min_diff(float_list_task)
 
 
 
@@ -109,6 +110,41 @@ Search_max_min_diff(float_list_task)
 # 3 -> 11
 # 2 -> 10
 
+# Способ первый:
+
+def Сonvert_decimal_to_binary(num:int) -> list:
+    """перевод числа из десятичного в двоичное"""
+    binary_num = []
+    print(f"Число в десятичной системе: {num}")
+    while num/2 > 0:
+        binary_num.append(num%2)
+        num = int(num/2)
+    else:
+        binary_num = binary_num[::-1]
+        print("Число в двоичной системе:", end = " ")
+        for i in range(len(binary_num)):
+            print(binary_num[i], end = "")
+        print()
+        return binary_num
+
+# y = int(input("Введите число в десятичной системе: "))
+# Сonvert_decimal_to_binary(y)
+
+# способ второй с помощью рекурсии:
+
+def Сonvert_decimal_to_binary_rec(num:int): 
+    """перевод числа из десятичного в двоичное c рекурсией"""
+    
+    # print(int(num%2), end = "")
+    if int(num/2) > 0:
+        Сonvert_decimal_to_binary_rec(num/2)
+    print(int(num%2), end = "")
+
+# x = int(input("Введите число в десятичной системе: "))
+# print("Число в двоичной системе: ", end = "")
+# Сonvert_decimal_to_binary_rec(x)
+# print()
+
 
 # 5-Задайте число. Составьте список чисел Фибоначчи, 
 # в том числе для отрицательных индексов.
@@ -116,6 +152,47 @@ Search_max_min_diff(float_list_task)
 # для k = 8 список будет выглядеть так:
 # [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21] 
 # Негафибоначчи
+
+def Create_fibonacci(n: int) -> list:
+    """Составление списка Фибоначчи"""
+
+    list_fibonacci_plus = []
+
+    for i in range(n+1):
+        if i == 0:
+            list_fibonacci_plus.append(0)
+        elif i == 1 or i == 2:
+            list_fibonacci_plus.append(1)
+        else:
+            i = list_fibonacci_plus[i-1] + list_fibonacci_plus[i-2]
+            list_fibonacci_plus.append(i)
+    print(list_fibonacci_plus)
+
+    list_fibonacci = []
+
+    for i in range(n+1):
+        if i == 0:
+            list_fibonacci.append(0)
+        elif i == 1:
+            list_fibonacci.append(1)
+        else:
+            i = list_fibonacci[i-2] - list_fibonacci[i-1]
+            list_fibonacci.append(i)
+
+    del list_fibonacci[0]
+    list_fibonacci = list_fibonacci[::-1]
+    print(list_fibonacci)
+   
+    list_fibonacci = list_fibonacci + list_fibonacci_plus
+    print(f"Список Фибоначчи для {n}: {list_fibonacci}")
+    return list_fibonacci
+
+х = int(input("Введите число создания списка Фибоначчи: "))
+Create_fibonacci(х)
+
+
+
+
 
 
 
