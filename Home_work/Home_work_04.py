@@ -153,7 +153,7 @@ def Write_text_file (path: str, lines: str ):
     """запись в файл"""
     with open(path,'w') as data:
         for  line in lines:
-            data.write(line + '\n')
+            data.write(line)
     return path
 
 def Read_text_file (path: str):
@@ -162,53 +162,67 @@ def Read_text_file (path: str):
     for line in data:
         print(line)
     data.close()
-
-line_in = ['AAAAAAAAAAAABBBBBBBBBBBCCCCCCCCCCDDDDDDEEEEEFFFFG python is sooooooo coooooool']
-path_in = 'task_5_in.txt'
-
-line_out = ['12A11B10C6D5E4FG python is s7o c7ol']
-path_out = 'task_5_out.txt'
-
-# Write_text_file(path_in,line_in)
-# Write_text_file(path_out,line_out)
-
-# Read_text_file(path_in)
-# Read_text_file(path_out)
+    return line
 
 def Make_RLE_algoritm (line: str) -> str:
     """RLE алгоритм: модуль сжатия"""
+
     cipher = ''
-    count = 0
-    test_char = line[0] 
+    count = 1 
     i = 0
-    line += ''
-    while i < len(line)-1:
+    
+    while i < len(line)-1: 
         if line[i] == line[i+1]:
             count = count + 1
             i += 1 
-        elif line[i] != line[i+1]:
+        else:
             if count == 1:
                  cipher = cipher + line[i]
             else:
                 cipher = cipher + str(count) + line[i]
-            count = 0
+            count = 1
             i +=1 
-        elif i == -1:
-            cipher = cipher + line[i]
-   
+    if count == 1:
+        cipher = cipher + line[i]
+    else: 
+        cipher = cipher + str(count) + line[i]
+
     print(f"шифр: {cipher}")
     return cipher
- 
-Make_RLE_algoritm(line_in) 
 
+def RLE_algoritm_decoding (cipher: str) -> str:
+    """RLE алгоритм: модуль восстановления""" 
+    decoding = ''
+    i = 0
+    mult = ''
 
-# def RLE_algoritm_decoding (path: str) -> str:
-#     """RLE алгоритм: модуль восстановления""" 
+    for i in range(len(cipher)): 
+        if cipher[i].isdigit():
+            mult = mult + cipher[i] 
+        else:
+            if mult != '':
+                decoding = decoding + int(mult)*cipher[i]
+            else:
+                decoding = decoding + cipher[i]
+            mult = ''
+    print(f"расшифровка: {decoding}")
+    return decoding
 
-#     for letter in word:
-#             letter_index = alfabet.find(letter)
-#             new_index = (letter_index + key_cipher)%33
-#             cipher = cipher + alfabet[new_index]
-      
-#     print(f"шифр: {cipher}")
-#     return cipher
+line_1 = 'AAAAAAAAAAAABBBBBBBBBBBCCCCCCCCCCDDDDDDEEEEEFFFFG python is sooooooo coooooool'
+path_in = 'task_5_in.txt'
+
+line_2 = '12A11B10C6D5E4FG python is s7o c7ol'
+path_out = 'task_5_out.txt'
+
+Write_text_file(path_in,line_1)
+
+line_in = Read_text_file(path_in)
+
+Make_RLE_algoritm(line_in)
+
+line_out = Make_RLE_algoritm(line_in)
+
+RLE_algoritm_decoding(line_out)
+
+Write_text_file(path_out,line_out)
+
