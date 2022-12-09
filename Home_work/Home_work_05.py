@@ -73,9 +73,24 @@ def Сreate_random_list(len_list: int,first_num: int, second_num: int) -> (list)
 
 #  3.Создайте программу для игры в ""Крестики-нолики"".
 
+def Who_wins(row_one, row_two, row_three, num):
+        if (row_one[0] == row_two[1]== row_three[2]== num or
+        row_one[2] == row_two[1]== row_three[0]== num or
+        row_one[0] == row_two[0]== row_three[0]== num or
+        row_one[1] == row_two[1]== row_three[1]== num or
+        row_one[2] == row_two[2]== row_three[2]== num or
+        row_one[0] == row_one[1]== row_one[2]== num or
+        row_two[0] == row_two[1]== row_two[2]== num or
+        row_three[0] == row_three[1]== row_three[2]== num):
+                return True
+        else:
+            return False
+    
+
 row_one = ['*' ,'*', '*']
 row_two = ['*' ,'*', '*']
 row_three = ['*' ,'*', '*']
+
 
 print (''. join(row_one))
 print(''. join(row_two))
@@ -92,116 +107,80 @@ else:
 count = 0 
 while count <= 9:
         if lot[0] == 0:
-                row = int(input("Ход ноликов.Введите номер ряда 1, 2 или 3: "))
+                row = int(input("Ход ноликов.Введите номер ряда 0, 1 или 2: "))
                 i = int(input("Введите номер позиции 0, 1 или 2: "))
-                if row == 1 and lot[0] == 0:
+                if row == 0 and row_one[i] == '*':
                         row_one[i] = '0'
                         print (''. join(row_one))
                         print(''. join(row_two))
                         print(''. join(row_three))
-                        
-                        if (row_one[0] == row_two[1]== row_three[2]== '0' or
-                        row_one[2] == row_two[1]== row_three[0]== '0' or
-                        row_one[0] == row_two[0]== row_three[0]== '0' or
-                        row_one[1] == row_two[1]== row_three[1]== '0' or
-                        row_one[2] == row_two[2]== row_three[2]== '0' or
-                        row_one[0] == row_one[1]== row_one[2]== '0' or
-                        row_two[0] == row_two[1]== row_two[2]== '0' or
-                        row_three[0] == row_three[1]== row_three[2]== '0'):
+                        a = Who_wins(row_one, row_two, row_three, '0')
+                        if a == True:
                                 print("Победили нолики!")
                                 break
                         count += 1
-                        lot[0] == 1
-                elif row == 2  and lot[0] == 0:
+                        lot[0] = 1
+                elif row == 1 and row_one[i] == '*':
                         row_two[i] = '0'
                         print (''. join(row_one))
                         print(''. join(row_two))
                         print(''. join(row_three))
-                        if (row_one[0] == row_two[1]== row_three[2]== '0' or
-                        row_one[2] == row_two[1]== row_three[0]== '0' or
-                        row_one[0] == row_two[0]== row_three[0]== '0' or
-                        row_one[1] == row_two[1]== row_three[1]== '0' or
-                        row_one[2] == row_two[2]== row_three[2]== '0' or
-                        row_one[0] == row_one[1]== row_one[2]== '0' or
-                        row_two[0] == row_two[1]== row_two[2]== '0' or
-                        row_three[0] == row_three[1]== row_three[2]== '0'):
+                        a = Who_wins(row_one, row_two, row_three, '0')
+                        if a == True:
                                 print("Победили нолики!")
                                 break
                         count += 1
-                        lot[0] == 1
-                elif row == 3 and lot[0] == 0:
+                        lot[0] = 1
+                elif row == 2 and row_one[i] == '*':
                         row_three[i] = '0'
                         print (''. join(row_one))
                         print(''. join(row_two))
                         print(''. join(row_three))
-                        if (row_one[0] == row_two[1]== row_three[2]== '0' or
-                        row_one[2] == row_two[1]== row_three[0]== '0' or
-                        row_one[0] == row_two[0]== row_three[0]== '0' or
-                        row_one[1] == row_two[1]== row_three[1]== '0' or
-                        row_one[2] == row_two[2]== row_three[2]== '0' or
-                        row_one[0] == row_one[1]== row_one[2]== '0' or
-                        row_two[0] == row_two[1]== row_two[2]== '0' or
-                        row_three[0] == row_three[1]== row_three[2]== '0'):
+                        a = Who_wins(row_one, row_two, row_three, '0')
+                        if a == True:
                                 print("Победили нолики!")
                                 break
                         count += 1
-                        lot[0] == 1
+                        lot[0] = 1
                 else:
                         print("Неверное значение")
+
         elif lot[0] == 1:
-                row = int(input("Ход крестиков.Введите номер ряда 1, 2 или 3: "))
+                row = int(input("Ход крестиков.Введите номер ряда 0, 1 или 2: "))
                 i = int(input("Введите номер позиции 0, 1 или 2: "))
-                if row == 1  and lot[0] == 1:
+                if row == 0:
                         row_one[i] = '+'
                         print (''. join(row_one))
                         print(''. join(row_two))
                         print(''. join(row_three))
-                        if (row_one[0] == row_two[1]== row_three[2]== '+' or
-                        row_one[2] == row_two[1]== row_three[0]== '+' or
-                        row_one[0] == row_two[0]== row_three[0]== '+' or
-                        row_one[1] == row_two[1]== row_three[1]== '+' or
-                        row_one[2] == row_two[2]== row_three[2]== '+' or
-                        row_one[0] == row_one[1]== row_one[2]== '+' or
-                        row_two[0] == row_two[1]== row_two[2]== '+' or
-                        row_three[0] == row_three[1]== row_three[2]== '+'):
+                        a = Who_wins(row_one, row_two, row_three, '+')
+                        if a == True:
                                 print("Победили крестики!")
                                 break
                         count += 1
-                        lot[0] == 0
-                elif row == 2 and lot[0] == 1:
+                        lot[0] = 0
+                elif row == 1:
                         row_two[i] = '+'
                         print (''. join(row_one))
                         print(''. join(row_two))
                         print(''. join(row_three))
-                        if (row_one[0] == row_two[1]== row_three[2]== '+' or
-                        row_one[2] == row_two[1]== row_three[0]== '+' or
-                        row_one[0] == row_two[0]== row_three[0]== '+' or
-                        row_one[1] == row_two[1]== row_three[1]== '+' or
-                        row_one[2] == row_two[2]== row_three[2]== '+' or
-                        row_one[0] == row_one[1]== row_one[2]== '+' or
-                        row_two[0] == row_two[1]== row_two[2]== '+' or
-                        row_three[0] == row_three[1]== row_three[2]== '+'):
+                        a = Who_wins(row_one, row_two, row_three, '+')
+                        if a == True:
                                 print("Победили крестики!")
                                 break
                         count += 1
-                        lot[0] == 0
-                elif row == 3 and lot[0] == 1:
+                        lot[0] = 0
+                elif row == 2:
                         row_three[i] = '+'
                         print (''. join(row_one))
                         print(''. join(row_two))
                         print(''. join(row_three))
-                        if (row_one[0] == row_two[1]== row_three[2]== '+' or
-                        row_one[2] == row_two[1]== row_three[0]== '+' or
-                        row_one[0] == row_two[0]== row_three[0]== '+' or
-                        row_one[1] == row_two[1]== row_three[1]== '+' or
-                        row_one[2] == row_two[2]== row_three[2]== '+' or
-                        row_one[0] == row_one[1]== row_one[2]== '+' or
-                        row_two[0] == row_two[1]== row_two[2]== '+' or
-                        row_three[0] == row_three[1]== row_three[2]== '+'):
+                        a = Who_wins(row_one, row_two, row_three, '+')
+                        if a == True:
                                 print("Победили крестики!")
                                 break
                         count += 1
-                        lot[0] == 0
+                        lot[0] = 0
                 else:
                         print("Неверное значение")
 else:
