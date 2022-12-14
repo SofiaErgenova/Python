@@ -47,12 +47,9 @@
 # 3-Сформировать список из N членов последовательности.
 # Для N = 5: 1, -3, 9, -27, 81 и т.д.
 
-# n = 5
-# def f(x):
-#     return (-3)**x
-# list_three = [f(i) for i in range(0,n)]
-# print(list_three)
-
+n = 5
+list_three = list((map(lambda i: (-3)**i,[i for i in range(0,n)])))
+print(list_three)
 
 
 # 4 - Дан список URL различных сайтов. Нужно составить список доменных имен сайтов.
@@ -62,14 +59,14 @@
 # https://uchi.ru/marathons/students/progresses/
 
 
-url_str = "https://gb.ru/lessons/284810"
+# url_str = "https://gb.ru/lessons/284810"
 
-index_start = url_str.find('/')
-index_end = url_str.find('/',index_start+2)
-list_url_str = list(url_str)
+# index_start = url_str.find('/')
+# index_end = url_str.find('/',index_start+2)
+# list_url_str = list(url_str)
 
-domen = [element for index,element in enumerate(list_url_str) if index > index_start+1 and index < index_end]
-print(''.join(domen))
+# domen = [element for index,element in enumerate(list_url_str) if index > index_start+1 and index < index_end]
+# print(''.join(domen))
 
 
 
